@@ -1,6 +1,7 @@
 require: rubocop-rails
 
 AllCops:
+  TargetRubyVersion: 3.2
   NewCops: enable
   Exclude:
     - 'bin/**'
@@ -21,4 +22,7 @@ Style/StringLiterals:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
   Enabled: false

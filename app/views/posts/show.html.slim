@@ -1,0 +1,37 @@
+ol.breadcrumb
+  li.breadcrumb-item
+    = link_to 'Все посты', root_path
+  li.breadcrumb-item.active
+    = @post.category.name
+h1
+  = @post.title
+p
+  = @post.body
+p
+  = "#{@post.creator.email} #{time_ago_in_words(@post.created_at)}"
+
+- if user_signed_in?
+  h4 Комментарии
+  = render 'posts/comments/form', comment: @comment, url: post_comments_path(@post)
+
+- @comments.each do |comment, sub_comments|
+    .card.mt-2.rounded-0 id=comment.id
+      .card-header.border-0
+        a.me-2 href="##{comment.id}"
+          | #
+        span.me-2
+          = comment.post.creator.email
+        span.fs-6.text-muted
+          = comment.created_at.strftime("%e %b., %H:%M")
+      .card-body.border-0
+        = comment.content
+      - if user_signed_in?
+        .card-footer.border-0
+          a.small.text-muted data-bs-toggle='collapse' href="#response#{comment.id}"
+            | Ответить
+          .collapse data-bs-target="response#{comment.id}" id="response#{comment.id}"
+            .card.card-body
+              = render 'posts/comments/form', comment: comment.children.new, url: post_comments_path(@post)
+          - if sub_comments.any?
+            ul
+              = render('posts/comments/sub_comment', sub_comments:)

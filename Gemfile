@@ -80,8 +80,15 @@ gem 'slim'
 gem "slim_lint"
 gem "slim-rails"
 
+gem 'simple_form'
+
 gem 'rubocop-rails'
 
 gem 'devise'
 
 gem 'html2slim'
+
+gem 'ancestry'
+
+gem 'i18n-tasks'
+gem 'rails-i18n'

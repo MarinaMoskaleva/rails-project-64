@@ -1,0 +1,8 @@
+h1
+ = 'Коллективный блог'
+br
+- @posts.each do |post|
+  h2
+    = link_to post.title, post_path(post), class: 'text-decoration-none text-dark'
+  p
+    = post.body

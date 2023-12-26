@@ -1,0 +1,8 @@
+h2
+  | Войти
+= simple_form_for(@user, url: session_path(@user)) do |f|
+  = f.input :email, autofocus: true, autocomplete: "email"
+  = f.input :password, autocomplete: "new-password"
+  = f.input :remember_me, as: :boolean
+  = f.submit "Войти", class: 'btn btn-primary'
+= link_to "Регистрация", new_registration_path(@user)

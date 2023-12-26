@@ -1,0 +1,10 @@
+ru:
+  flash:
+    notice:
+      post_published: 'Пост опубликован'
+      comment_published: 'Комментарий опубликован'
+    error:
+      post_unpublished: Не удалось создать пост. Проверьте введенные данные
+      comment_unpublished: Тело комментария не может быть пустым.
+  ancestry:
+    no_child_for_new_record: "Нет потомков для новой записи."
