@@ -1,9 +1,11 @@
 class Posts::CommentsController < ApplicationController
   before_action :set_post, only: [:create]
+  before_action :authenticate_user!, only: [:create]
 
   def create
     @comment = PostComment.new(comment_params)
     @comment.post = @post
+    @comment.creator = current_user
     # @comment = @post.comments.build(comment_params)
     if @comment.save
       flash[:notice] = I18n.t('flash.notice.comment_published')
