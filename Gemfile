@@ -81,3 +81,7 @@ gem "slim_lint"
 gem "slim-rails"
 
 gem 'rubocop-rails'
+
+gem 'devise'
+
+gem 'html2slim'

@@ -1,5 +1,9 @@
 # README
 
+[![Actions Status](https://github.com/MarinaMoskaleva/rails-project-64/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/MarinaMoskaleva/rails-project-64/actions)
+
+[MyApp](https://hexlet-study-project-blog.onrender.com/)
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
