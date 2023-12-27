@@ -1,28 +1,27 @@
-# README
+# Collective blog
 
 [![Actions Status](https://github.com/MarinaMoskaleva/rails-project-64/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/MarinaMoskaleva/rails-project-64/actions)
 
-[MyApp](https://hexlet-study-project-blog.onrender.com/)
+Every user has the ability to generate and publish a post within any of the shared categories, while fellow users can provide ratings and comments on the contributed content.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[Production](https://hexlet-study-project-blog.onrender.com/)
 
-Things you may want to cover:
+* Ruby version 3.2.2
 
-* Ruby version
+## Installation
 
-* System dependencies
+```
+make setup
+```
 
-* Configuration
+## Tests
 
-* Database creation
+```
+make test
+```
 
-* Database initialization
+## Linters
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+make lint
+```

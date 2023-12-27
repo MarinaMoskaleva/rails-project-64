@@ -1,6 +1,8 @@
 .container.mb-2
   .d-flex.flex-wrap.align-items-center.py-2.border-bottom
     .navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark
+      a.navbar-brand.m-2(href='/')
+        = image_tag asset_path('logo.png'), width: 30, alt: t('.hexlet_logo')
       ul.nav.nav-pills.flex-grow-1.navbar-nav.justify-content-end.gap-3.m-2
         li.nav-item
           = link_to 'Войти', new_user_session_path, class: 'nav-link'
