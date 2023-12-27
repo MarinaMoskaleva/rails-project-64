@@ -7,8 +7,22 @@ h1
   = @post.title
 p
   = @post.body
-p
+
+.d-flex.justify-content-between.mt-5
   = "#{@post.creator.email} #{time_ago_in_words(@post.created_at)}"
+  div
+    span.me-2
+      = @post.post_likes.count
+    - if user_signed_in?
+      - if @like_id
+        = link_to like_path(@like_id), class: 'link-dark', data: { turbo_method: :delete } do
+          i.bi.bi-hand-thumbs-up-fill
+      - else
+        = link_to post_likes_path(@post), class: 'link-dark', data: { turbo_method: :post } do
+          i.bi.bi-hand-thumbs-up
+    - else
+      a.link-dark
+        i.bi.bi-hand-thumbs-up
 
 - if user_signed_in?
   h4 Комментарии

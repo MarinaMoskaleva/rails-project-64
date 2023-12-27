@@ -1,10 +1,9 @@
-class Posts::CommentsController < ApplicationController
-  before_action :set_post, only: [:create]
-  before_action :authenticate_user!, only: [:create]
+class Posts::CommentsController < Posts::ApplicationController
+  before_action :authenticate_user!
 
   def create
     @comment = PostComment.new(comment_params)
-    @comment.post = @post
+    @comment.post = resource_post
     @comment.creator = current_user
     # @comment = @post.comments.build(comment_params)
     if @comment.save
@@ -12,14 +11,10 @@ class Posts::CommentsController < ApplicationController
     else
       flash[:error] = I18n.t('flash.error.comment_unpublished')
     end
-    redirect_to post_path(@post)
+    redirect_to post_path(resource_post)
   end
 
   private
-
-  def set_post
-    @post = Post.find(params[:post_id])
-  end
 
   def comment_params
     params.require(:post_comment).permit(:content, :parent_id)

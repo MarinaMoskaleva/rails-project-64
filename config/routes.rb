@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  # get 'likes/create'
+  # get 'likes/destroy'
   devise_for :users
   get 'welcome/index'
   resources :posts, only: [:index, :show, :new, :create], shallow: true do
     scope module: :posts do
       resources :comments, only: :create
+      resources :likes, only: [:create, :destroy]
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
