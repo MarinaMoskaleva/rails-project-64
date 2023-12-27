@@ -6,8 +6,6 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     @post = posts(:one)
     @category = categories(:one)
     @parent_comment = post_comments(:with_comments)
-    @commert_with_nested = post_comments(:nested)
-    @commert_with_deep_nested = post_comments(:deep_nested)
     @attrs = {
       content: Faker::Lorem.paragraph(random_sentences_to_add: 10)
     }

@@ -4,15 +4,4 @@ with_comments:
   content: this is comment with comments
   creator: one
   post: one
-
-nested:
-  content: commented comment
-  post: one
-  creator: one
-  ancestry: <%= ActiveRecord::FixtureSet.identify(:with_comments) %>
-
-deep_nested:
-  content: deep comment
-  post: one
-  creator: one
-  ancestry: <%= [ActiveRecord::FixtureSet.identify(:with_comments), ActiveRecord::FixtureSet.identify(:nested)].join('/') %>
+  
