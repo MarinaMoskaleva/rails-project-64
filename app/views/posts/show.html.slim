@@ -15,7 +15,7 @@ p
       = @post.likes.count
     - if user_signed_in?
       - if @like_id
-        = link_to post_likes_path(@like_id), class: 'link-dark', data: { turbo_method: :delete } do
+        = link_to like_path(@like_id), class: 'link-dark', data: { turbo_method: :delete } do
           i.bi.bi-hand-thumbs-up-fill
       - else
         = link_to post_likes_path(@post), class: 'link-dark', data: { turbo_method: :post } do
