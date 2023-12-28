@@ -4,7 +4,7 @@
       a.me-2 href="##{comment.id}"
         | #
       span.me-2
-        = comment.post.creator.email
+        = comment.user.email
       span.fs-6.text-muted
         = comment.created_at.strftime("%e %b., %H:%M")
     .card-body.border-0

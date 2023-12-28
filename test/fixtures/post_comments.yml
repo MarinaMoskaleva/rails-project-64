@@ -2,6 +2,6 @@
 
 with_comments:
   content: this is comment with comments
-  creator: one
+  user: one
   post: one
   

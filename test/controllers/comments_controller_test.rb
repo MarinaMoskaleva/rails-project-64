@@ -27,7 +27,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     post post_comments_url(@post), params: { post_comment: @nested_attrs }
 
     comment = PostComment.find do |i|
-      i.ancestry == @nested_attrs[:parent_id] && i.post == @post && i.creator == @user
+      i.ancestry == @nested_attrs[:parent_id] && i.post == @post && i.user == @user
     end
 
     assert { comment }

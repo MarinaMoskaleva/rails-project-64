@@ -12,10 +12,10 @@ p
   = "#{@post.creator.email} #{time_ago_in_words(@post.created_at)}"
   div
     span.me-2
-      = @post.post_likes.count
+      = @post.likes.count
     - if user_signed_in?
       - if @like_id
-        = link_to like_path(@like_id), class: 'link-dark', data: { turbo_method: :delete } do
+        = link_to post_likes_path(@like_id), class: 'link-dark', data: { turbo_method: :delete } do
           i.bi.bi-hand-thumbs-up-fill
       - else
         = link_to post_likes_path(@post), class: 'link-dark', data: { turbo_method: :post } do
@@ -34,7 +34,7 @@ p
         a.me-2 href="##{comment.id}"
           | #
         span.me-2
-          = comment.post.creator.email
+          = comment.user.email
         span.fs-6.text-muted
           = comment.created_at.strftime("%e %b., %H:%M")
       .card-body.border-0
@@ -46,6 +46,6 @@ p
           .collapse data-bs-target="response#{comment.id}" id="response#{comment.id}"
             .card.card-body
               = render 'posts/comments/form', comment: comment.children.new, url: post_comments_path(@post)
-          - if sub_comments.any?
+          - if sub_comments.any? && user_signed_in?
             ul
               = render('posts/comments/sub_comment', sub_comments:)
