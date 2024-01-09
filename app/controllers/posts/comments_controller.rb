@@ -2,14 +2,12 @@ class Posts::CommentsController < Posts::ApplicationController
   before_action :authenticate_user!
 
   def create
-    @comment = PostComment.new(comment_params)
-    @comment.post = resource_post
+    @comment = resource_post.comments.build(comment_params)
     @comment.user = current_user
-    # @comment = @post.comments.build(comment_params)
     if @comment.save
       flash[:notice] = I18n.t('flash.notice.comment_published')
     else
-      flash[:error] = I18n.t('flash.error.comment_unpublished')
+      flash[:error] = I18n.t('flash.error.comment_not_published')
     end
     redirect_to post_path(resource_post)
   end

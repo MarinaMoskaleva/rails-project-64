@@ -1,7 +1,8 @@
-h1 Новый пост
+h1
+  = t('new_post').capitalize
 
 = simple_form_for(@post) do |f|
-  = f.input :title, hint: '5-255 символов'
+  = f.input :title
   = f.association :category, required: true
-  = f.input :body, hint: 'От 200 до 4000 символов'
-  = f.submit 'Опубликовать', class: 'btn btn-primary mt-3'
+  = f.input :body
+  = f.button :submit, class: 'btn btn-primary mt-3'

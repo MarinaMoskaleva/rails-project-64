@@ -1,13 +1,20 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  body: MyText
+  title: <%= Faker::Lorem.sentence %>
+  body: <%= Faker::Lorem.paragraph %>
   category: one
   creator: one
 
 two:
-  title: MyString
-  body: MyText
+  title: <%= Faker::Lorem.sentence %>
+  body: <%= Faker::Lorem.paragraph %>
   category: two
   creator: two
+
+without_like:
+  title: <%= Faker::Lorem.sentence %>
+  body: <%= Faker::Lorem.paragraph %>
+  category: two
+  creator: two
+

@@ -1,8 +1,8 @@
 h2
-  | Регистрация
+  = t('signup')
 = simple_form_for(@user, url: registration_path(@user)) do |f|
   = f.input :email, autofocus: true, autocomplete: "email"
-  = f.input :password, autocomplete: "new-password", hint: '(минимум 6 знаков)'
+  = f.input :password, autocomplete: "new-password"
   = f.input :password_confirmation, autocomplete: "new-password"
-  = f.submit "Регистрация", class: 'btn btn-primary'
-= link_to "Войти", new_session_path(@user)
+  = f.submit t('signup'), class: 'btn btn-primary'
+= link_to t('sign_in'), new_session_path(@user)

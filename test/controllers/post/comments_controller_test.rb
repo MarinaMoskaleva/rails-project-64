@@ -4,7 +4,6 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:one)
     @post = posts(:one)
-    @category = categories(:one)
     @parent_comment = post_comments(:with_comments)
     @attrs = {
       content: Faker::Lorem.paragraph(random_sentences_to_add: 10)
@@ -17,7 +16,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
   test "should create comment" do
     post post_comments_url(@post), params: { post_comment: @attrs }
 
-    comment = PostComment.find_by @attrs.merge({ post: @post })
+    comment = PostComment.find_by @attrs.merge({ post: @post, user: @user })
 
     assert { comment }
     assert_redirected_to @post

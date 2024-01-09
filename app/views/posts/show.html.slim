@@ -1,6 +1,6 @@
 ol.breadcrumb
   li.breadcrumb-item
-    = link_to 'Все посты', root_path
+    = link_to t('all_posts'), root_path
   li.breadcrumb-item.active
     = @post.category.name
 h1
@@ -14,8 +14,8 @@ p
     span.me-2
       = @post.likes.count
     - if user_signed_in?
-      - if @like_id
-        = link_to like_path(@like_id), class: 'link-dark', data: { turbo_method: :delete } do
+      - if @like
+        = link_to post_like_path(@post, @like.id), class: 'link-dark', data: { turbo_method: :delete } do
           i.bi.bi-hand-thumbs-up-fill
       - else
         = link_to post_likes_path(@post), class: 'link-dark', data: { turbo_method: :post } do
@@ -25,27 +25,8 @@ p
         i.bi.bi-hand-thumbs-up
 
 - if user_signed_in?
-  h4 Комментарии
+  h4
+    = t('comments')
   = render 'posts/comments/form', comment: @comment, url: post_comments_path(@post)
 
-- @comments.each do |comment, sub_comments|
-    .card.mt-2.rounded-0 id=comment.id
-      .card-header.border-0
-        a.me-2 href="##{comment.id}"
-          | #
-        span.me-2
-          = comment.user.email
-        span.fs-6.text-muted
-          = comment.created_at.strftime("%e %b., %H:%M")
-      .card-body.border-0
-        = comment.content
-      - if user_signed_in?
-        .card-footer.border-0
-          a.small.text-muted data-bs-toggle='collapse' href="#response#{comment.id}"
-            | Ответить
-          .collapse data-bs-target="response#{comment.id}" id="response#{comment.id}"
-            .card.card-body
-              = render 'posts/comments/form', comment: comment.children.new, url: post_comments_path(@post)
-          - if sub_comments.any? && user_signed_in?
-            ul
-              = render('posts/comments/sub_comment', sub_comments:)
+= render('posts/comments/sub_comment', sub_comments: @comments)

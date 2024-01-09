@@ -2,13 +2,13 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create]
 
   def index
-    @posts = Post.all
+    @posts = Post.includes(:creator).order(created_at: :desc)
   end
 
   def show
     @post = Post.find params[:id]
-    @comments = @post.comments.arrange
-    @like_id = @post.likes.find_by(user: current_user)&.id if current_user
+    @comments = @post.comments.includes(:user).arrange
+    @like = @post.likes.find_by(user: current_user)
     @comment = PostComment.new
   end
 
@@ -22,7 +22,7 @@ class PostsController < ApplicationController
       flash[:notice] = I18n.t('flash.notice.post_published')
       redirect_to post_path(@post)
     else
-      flash[:error] = I18n.t('flash.error.post_unpublished')
+      flash[:error] = I18n.t('flash.error.post_not_published')
       render :new, status: :unprocessable_entity
     end
   end

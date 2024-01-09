@@ -1,4 +1,4 @@
 class PostLike < ApplicationRecord
   belongs_to :user, inverse_of: :likes
-  belongs_to :post, inverse_of: :likes
+  belongs_to :post, inverse_of: :likes, counter_cache: true
 end

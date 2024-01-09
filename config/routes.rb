@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
-  # get 'likes/create'
-  # get 'likes/destroy'
   devise_for :users
-  get 'welcome/index'
-  resources :posts, only: [:index, :show, :new, :create], shallow: true do
+  resources :posts, only: [:index, :show, :new, :create] do
     scope module: :posts do
       resources :comments, only: :create
       resources :likes, only: [:create, :destroy]
