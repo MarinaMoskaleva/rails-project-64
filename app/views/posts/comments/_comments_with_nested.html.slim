@@ -1,4 +1,4 @@
-- sub_comments.each do |comment, deep_sub_comments|
+- comments.each do |comment, sub_comments|
   .card.mt-2.rounded-0 id=comment.id
     .card-header.border-0
       a.me-2 href="##{comment.id}"
@@ -9,9 +9,9 @@
         = comment.created_at.strftime("%e %b., %H:%M")
     .card-body.border-0
       = comment.content
-    - if sub_comments.any?
+    - if comments.any?
       ul
-        = render('posts/comments/sub_comment', sub_comments: deep_sub_comments)
+        = render('posts/comments/comments_with_nested', comments: sub_comments)
     - if user_signed_in?
       .card-footer.border-0
         a.small.text-muted data-bs-toggle='collapse' href="#response#{comment.id}"

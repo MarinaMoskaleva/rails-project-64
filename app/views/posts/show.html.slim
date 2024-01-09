@@ -29,4 +29,4 @@ p
     = t('comments')
   = render 'posts/comments/form', comment: @comment, url: post_comments_path(@post)
 
-= render('posts/comments/sub_comment', sub_comments: @comments)
+= render('posts/comments/comments_with_nested', comments: @comments)
