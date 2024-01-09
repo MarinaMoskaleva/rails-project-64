@@ -8,9 +8,9 @@ class Posts::LikesController < Posts::ApplicationController
 
   def destroy
     @like = PostLike.find params[:id]
-    return if @like.blank? || @like.user != current_user
+    return if @like.blank?
 
-    @like.destroy
+    @like.destroy if @like.user == current_user
     redirect_to post_path(resource_post)
   end
 
