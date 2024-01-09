@@ -1,4 +1,4 @@
-require "test_helper"
+require 'test_helper'
 
 class LikesControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -8,7 +8,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
 
     sign_in @user
   end
-  test "should create like" do
+  test 'should create like' do
     post post_likes_path(@post_without_like)
 
     like = PostLike.find_by({ post: @post_without_like, user: @user })
@@ -17,7 +17,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to post_url(@post_without_like)
   end
 
-  test "should destroy like" do
+  test 'should destroy like' do
     like = post_likes(:one)
     delete post_like_path(@post, like)
     assert { @post.likes.find_by(id: like.id).nil? }

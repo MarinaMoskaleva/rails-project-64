@@ -1,4 +1,4 @@
-require "test_helper"
+require 'test_helper'
 
 class CommentsControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -13,7 +13,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     sign_in @user
   end
 
-  test "should create comment" do
+  test 'should create comment' do
     post post_comments_url(@post), params: { post_comment: @attrs }
 
     comment = PostComment.find_by @attrs.merge({ post: @post, user: @user })
@@ -22,7 +22,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to @post
   end
 
-  test "should create nested comment" do
+  test 'should create nested comment' do
     post post_comments_url(@post), params: { post_comment: @nested_attrs }
 
     comment = PostComment.find do |i|
