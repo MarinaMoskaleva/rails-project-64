@@ -6,7 +6,7 @@
       span.me-2
         = comment.user.email
       span.fs-6.text-muted
-        = comment.created_at.strftime("%e %b., %H:%M")
+        = comment.created_at.strftime('%e %b., %H:%M')
     .card-body.border-0
       = comment.content
     - if comments.any?
