@@ -9,9 +9,8 @@ class Posts::LikesController < Posts::ApplicationController
   end
 
   def destroy
-    @like = current_user.likes.find params[:id]
-    # @like = PostLike.find_by(id: params[:id])
-    # return if @like.blank?
+    @like = PostLike.find_by(id: params[:id])
+    return if @like.blank?
 
     @like.destroy if @like.user == current_user
     redirect_to post_path(resource_post)
