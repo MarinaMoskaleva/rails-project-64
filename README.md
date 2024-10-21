@@ -8,7 +8,7 @@ Every user has the ability to generate and publish a post within any of the shar
 
 * Ruby version 3.2.2
 
-## Installation1
+## Installation2
 
 ```
 make setup
